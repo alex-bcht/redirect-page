@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (isMobile) {
+                var params = new URLSearchParams(window.location.search);
+                var deepLink = "sportartonline://app/resetpassword";
+                for (var [key, value] of params.entries()) {
+                    deepLink += (deepLink.includes('?') ? '&' : '?') + key + '=' + value;
+                }
+                window.location.href = deepLink;
+            } else {
+                document.getElementById("message").innerHTML = "Veuillez ouvrir ce lien depuis un appareil mobile.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="message">Redirection en cours...</p>
+</body>
+</html>
